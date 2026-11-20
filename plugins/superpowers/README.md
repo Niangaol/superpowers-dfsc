@@ -397,4 +397,13 @@ MIT License - see LICENSE file for details
 
 ## Visual companion telemetry
 
-Because skills and plugins don't provide any feedback to creators, we have no idea how many of you are using Superpowers. By default, the Prime Radiant logo on brainstorming's optional visual companion feature is loaded from our website. It includes the version of Superpowers in use. It does not include any details about your project, prompt, or coding agent. We don't see your clicks or anything about what you're building. This helps us have a rough idea of how many folks are using Superpowers and which version of Superpowers they're using. It's 100% optional. To disable this, set the environment variable `SUPERPOWERS_DISABLE_TELEMETRY` to any true value. Superpowers also honors Claude Code's `DISABLE_TELEMETRY` and `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC` opt-outs.
+**DFSC 打包的改动：默认不加载。** 上游 Superpowers 在 brainstorming 的可选可视化伴侣页面里，
+默认从 `primeradiant.com` 加载 Prime Radiant 的 Logo 图片，并在查询串里带上 Superpowers 版本号，
+用于粗略统计使用人数与版本分布。请求不包含项目内容、提示词或会话数据，但浏览器确实会向第三方发起一次请求。
+
+这个 DFSC 副本把该请求改为**显式 opt-in**：默认只渲染文字标志，不发任何第三方请求。
+需要 Logo 时设置环境变量 `BRAINSTORM_BRAND_LOGO=1`；同时仍沿用上游的退出开关
+`SUPERPOWERS_DISABLE_TELEMETRY` / `DISABLE_TELEMETRY` / `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC`。
+在任何一项退出开关为真时，即使设置了 `BRAINSTORM_BRAND_LOGO` 也不会加载。
+
+页面里仍有一个指向 `github.com/obra/superpowers` 的普通链接；它只在点击时跳转，不会自动请求。
