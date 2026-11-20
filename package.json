@@ -3,9 +3,12 @@
   "private": true,
   "type": "module",
   "description": "superpowers 打包副本的最小验证集：可视化伴侣默认不发起第三方请求。",
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "test": "node tests/no-third-party-assets.mjs",
-    "test:no-third-party": "node tests/no-third-party-assets.mjs"
+    "test:no-third-party": "node tests/no-third-party-assets.mjs",
+    "test:market-installed": "node tests/market-installed-scripts.mjs"
   }
 }
